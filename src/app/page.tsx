@@ -1,5 +1,3 @@
-// import { Editor } from '@/components/ux/Editor'
-
 import { Editor } from '@/components/ux/Editor'
 
 export default function Home() {
@@ -11,7 +9,7 @@ export default function Home() {
       <div
         className="mx-auto grid min-h-[700px] w-full max-w-7xl overflow-hidden
         rounded-xl border border-black/20 bg-white shadow-lg lg:grid-cols-[5rem_1fr]
-        laptop-sm:grid-cols-[16rem_1fr] laptop-md:grid-cols-[16rem_1fr] 2xl:grid-cols-[16rem_1fr]"
+        laptop-sm:grid-cols-[20rem_1fr] laptop-md:grid-cols-[20rem_1fr] 2xl:grid-cols-[20rem_1fr]"
       >
         <aside className="hidden flex-col gap-8 border-r border-r-zinc-100 bg-zinc-50 p-4 md:flex">
           <nav className="flex gap-2">
