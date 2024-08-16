@@ -5,6 +5,20 @@ interface FloatMenuProps {
 }
 
 export function FloatMenuItems({ editor }: FloatMenuProps) {
+  const handleMenuItemClick = (command: () => void) => {
+    return () => {
+      const selection = editor.state.selection
+      const from = selection.from - 1 // Posição do '/'
+
+      // Verifica se o caractere '/' está antes da seleção e o remove
+      if (editor.state.doc.textBetween(from, from + 1) === '/') {
+        editor.commands.deleteRange({ from, to: from + 1 })
+      }
+
+      command()
+    }
+  }
+
   return (
     <>
       <button className="flex min-w-[280px] items-center gap-2 rounded p-1 hover:bg-zinc-600">
@@ -23,7 +37,9 @@ export function FloatMenuItems({ editor }: FloatMenuProps) {
 
       <button
         className="flex min-w-[280px] items-center gap-2 rounded p-1 hover:bg-zinc-600"
-        onClick={() => editor.chain().focus().toggleHeading({ level: 1 }).run()}
+        onClick={handleMenuItemClick(() =>
+          editor.chain().focus().toggleHeading({ level: 1 }).run(),
+        )}
       >
         <img
           src="https://www.notion.so/images/blocks/header.57a7576a.png"
@@ -38,7 +54,9 @@ export function FloatMenuItems({ editor }: FloatMenuProps) {
 
       <button
         className="flex min-w-[280px] items-center gap-2 rounded p-1 hover:bg-zinc-600"
-        onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
+        onClick={handleMenuItemClick(() =>
+          editor.chain().focus().toggleHeading({ level: 2 }).run(),
+        )}
       >
         <img
           src="https://www.notion.so/images/blocks/subheader.9aab4769.png"
@@ -53,7 +71,9 @@ export function FloatMenuItems({ editor }: FloatMenuProps) {
 
       <button
         className="flex min-w-[280px] items-center gap-2 rounded p-1 hover:bg-zinc-600"
-        onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
+        onClick={handleMenuItemClick(() =>
+          editor.chain().focus().toggleHeading({ level: 3 }).run(),
+        )}
       >
         <img
           src="https://www.notion.so/images/blocks/subsubheader.d0ed0bb3.png"
@@ -68,7 +88,9 @@ export function FloatMenuItems({ editor }: FloatMenuProps) {
 
       <button
         className="flex min-w-[280px] items-center gap-2 rounded p-1 hover:bg-zinc-600"
-        onClick={() => editor.chain().focus().toggleBulletList().run()}
+        onClick={handleMenuItemClick(() =>
+          editor.chain().focus().toggleBulletList().run(),
+        )}
       >
         <img
           src="https://www.notion.so/images/blocks/bulleted-list.0e87e917.png"
@@ -85,7 +107,9 @@ export function FloatMenuItems({ editor }: FloatMenuProps) {
 
       <button
         className="flex min-w-[280px] items-center gap-2 rounded p-1 hover:bg-zinc-600"
-        onClick={() => editor.chain().focus().toggleOrderedList().run()}
+        onClick={handleMenuItemClick(() =>
+          editor.chain().focus().toggleOrderedList().run(),
+        )}
       >
         <img
           src="https://www.notion.so/images/blocks/numbered-list.0406affe.png"
@@ -100,7 +124,9 @@ export function FloatMenuItems({ editor }: FloatMenuProps) {
 
       <button
         className="flex min-w-[280px] items-center gap-2 rounded p-1 hover:bg-zinc-600"
-        onClick={() => editor.chain().focus().toggleBlockquote().run()}
+        onClick={handleMenuItemClick(() =>
+          editor.chain().focus().toggleBlockquote().run(),
+        )}
       >
         <img
           src="https://www.notion.so/images/blocks/quote/en-US.png"
@@ -115,7 +141,9 @@ export function FloatMenuItems({ editor }: FloatMenuProps) {
 
       <button
         className="flex min-w-[280px] items-center gap-2 rounded p-1 hover:bg-zinc-600"
-        onClick={() => editor.chain().focus().toggleCodeBlock().run()}
+        onClick={handleMenuItemClick(() =>
+          editor.chain().focus().toggleCodeBlock().run(),
+        )}
       >
         <img
           src="https://www.notion.so/images/blocks/code.a8b201f4.png"

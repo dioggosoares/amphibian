@@ -34,7 +34,7 @@ import { BubbleButton } from '@/components/ui/BubbleButton'
 
 import { FloatMenuItems } from '../FloatMenuItems'
 
-import 'highlight.js/styles/github-dark.css'
+import 'highlight.js/styles/monokai-sublime.css'
 import './styles/placeholder.css'
 
 lowlight.registerLanguage('ts', ts)
